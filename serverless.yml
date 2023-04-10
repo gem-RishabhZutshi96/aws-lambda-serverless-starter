@@ -32,3 +32,8 @@ prod:
   vpc:
     securityGroupId: ${self:custom.vpc.${self:provider.stage}.securityGroupId}
     subnetId: ${self:custom.vpc.${self:provider.stage}.subnetId}
+    
+dev:
+  vpc:
+    securityGroupId: ${self:custom.vpc.${self:provider.stage}.securityGroupId}
+    subnetId: ${self:custom.vpc.${self:provider.stage}.subnetId}    
