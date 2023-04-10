@@ -1,9 +1,30 @@
+
 service: clientos
 
 provider:
   name: aws
   runtime: nodejs12.x
+  stage: ${opt:stage, "dev"}
 
+custom:
+  vpc:
+    securityGroupId: ${self:custom.vpc.${self:provider.stage}.securityGroupId}
+    subnetId: ${self:custom.vpc.${self:provider.stage}.subnetId}
+
+  dev:
+    vpc:
+      securityGroupId: sg-0fc503ea4ecd78ba8
+      subnetId:
+        - subnet-06eeaa6274e752729
+        - subnet-08d2585e27947bb05
+
+  prod:
+    vpc:
+      securityGroupId: sg-0ae3bb05b61277fe3
+      subnetId:
+        - subnet-0c39d93824dbaa57e
+        - subnet-02cb875a1e644535c
+  
 functions:
   getOsInfo:
     handler: handler.getOsInfo
