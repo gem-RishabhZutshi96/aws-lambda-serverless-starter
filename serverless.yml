@@ -4,7 +4,7 @@ service: clientos
 provider:
   name: aws
   runtime: nodejs12.x
-  stage: ${opt:stage, "prod"}
+  stage: ${opt:stage, "dev"}
 
 custom:
   vpc:
